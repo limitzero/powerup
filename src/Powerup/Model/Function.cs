@@ -51,6 +51,9 @@ namespace Powerup.Model
                     }
                 }
             }
+
+            if (_script.Length > 0)
+                _script.AppendLine("GO");
         }
     }
 }

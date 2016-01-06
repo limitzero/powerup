@@ -28,7 +28,7 @@ namespace Powerup.Model
         private void BuildDefintion()
         {
             _script.AppendFormat(
-                "IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{0}') AND type in (N'V''))",
+                "IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{0}') AND type in (N'V'))",
                 this.QualifiedName).AppendLine();
             _script.AppendFormat("DROP VIEW {0}", this.QualifiedName).AppendLine();
             _script.AppendLine("GO").AppendLine();
@@ -52,6 +52,9 @@ namespace Powerup.Model
                     }
                 }
             }
+
+            if (_script.Length > 0)
+                _script.AppendLine("GO");
         }
     }
 }
